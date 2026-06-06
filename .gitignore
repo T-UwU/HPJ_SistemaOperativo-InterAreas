@@ -21,6 +21,3 @@ yarn-error.log*
 
 # Estado local de la CLI de Supabase (no versionar)
 supabase/.temp
-
-# Configuracion local personal de Claude Code
-.claude/settings.local.json
