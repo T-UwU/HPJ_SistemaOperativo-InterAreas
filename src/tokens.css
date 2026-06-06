@@ -1,0 +1,218 @@
+/* Hotel Palacio Julio — boutique luxury design tokens */
+
+:root {
+  /* Surfaces — warm ivory tonal range */
+  --bg: #FAF7F2;
+  --bg-deep: #F7F2EA;
+  --card: #FEFCF8;
+  --card-2: #FAF5EC;
+  --line: #EDE5D8;
+  --line-soft: #F3EDE2;
+  --hairline: #E0D6C6;
+
+  /* Ink */
+  --ink: #1F1B16;
+  --ink-2: #2A2520;
+  --ink-3: #4A4339;
+  --muted: #6E6358;
+  --muted-2: #8C8275;
+  --faint: #B6AB99;
+
+  /* Brand */
+  --forest: #2B463A;
+  --forest-deep: #1B2E26;
+  --forest-soft: #D6DDD5;
+  --brass: #A0814A;
+  --brass-soft: #E6D7B8;
+  --brass-deep: #6E5730;
+
+  /* States */
+  --ok: #4F7A4E;
+  --ok-soft: #E1ECDB;
+  --warn: #C0824B;
+  --warn-soft: #F4E5D2;
+  --danger: #A14237;
+  --danger-soft: #F0D9D3;
+  --info: #3F6480;
+  --info-soft: #DCE5EC;
+
+  /* Type */
+  --serif: 'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif;
+  --sans: 'Geist', 'Geist Variable', 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* base reset inside phone screens */
+.hpj { font-family: var(--sans); color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; }
+.hpj * { box-sizing: border-box; }
+.hpj button { font-family: inherit; color: inherit; }
+
+/* Serif display */
+.hpj-serif { font-family: var(--serif); font-weight: 500; letter-spacing: -0.01em; }
+.hpj-mono { font-family: var(--mono); }
+
+/* Logo mark */
+.hpj-mark {
+  font-family: var(--serif);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 10px;
+  color: var(--brass-deep);
+}
+.hpj-mark::before,
+.hpj-mark::after {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 1px;
+  background: var(--brass);
+  vertical-align: middle;
+  margin: 0 8px 3px;
+}
+
+.dot { display: inline-block; width: 6px; height: 6px; border-radius: 999px; vertical-align: middle; }
+.dot-ok { background: var(--ok); }
+.dot-warn { background: var(--warn); }
+.dot-danger { background: var(--danger); }
+.dot-info { background: var(--info); }
+.dot-muted { background: var(--faint); }
+
+.hpj hr.hairline { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+.hpj .card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.hpj .pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  height: 22px; padding: 0 9px; border-radius: 999px;
+  font-size: 11px; font-weight: 500;
+  background: var(--card-2); color: var(--ink-3);
+  border: 1px solid var(--line);
+}
+.hpj .pill-forest { background: var(--forest-soft); color: var(--forest-deep); border-color: transparent; }
+.hpj .pill-brass { background: var(--brass-soft); color: var(--brass-deep); border-color: transparent; }
+.hpj .pill-ok { background: var(--ok-soft); color: var(--ok); border-color: transparent; }
+.hpj .pill-warn { background: var(--warn-soft); color: var(--warn); border-color: transparent; }
+.hpj .pill-danger { background: var(--danger-soft); color: var(--danger); border-color: transparent; }
+.hpj .pill-info { background: var(--info-soft); color: var(--info); border-color: transparent; }
+.hpj .pill-ghost { background: transparent; border-color: var(--line); color: var(--muted); }
+.hpj .pill-dark { background: var(--forest-deep); color: var(--bg); border-color: transparent; }
+
+.hpj .btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 18px; border-radius: 12px; border: 1px solid transparent;
+  font-size: 14px; font-weight: 500; cursor: pointer;
+  transition: background .15s, transform .08s;
+}
+.hpj .btn-primary { background: var(--forest); color: #F4EFE6; }
+.hpj .btn-primary:active { transform: scale(0.99); }
+.hpj .btn-ghost { background: transparent; border-color: var(--line); color: var(--ink); }
+.hpj .btn-brass { background: var(--brass); color: #FAF4E6; }
+.hpj .btn-icon {
+  width: 36px; height: 36px; padding: 0; border-radius: 50%;
+  background: var(--card); border: 1px solid var(--line);
+}
+
+.hpj .section-eyebrow {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--muted-2); font-weight: 500;
+}
+
+.hpj .tabbar {
+  display: flex; align-items: stretch; justify-content: space-around;
+  padding: 8px 6px 18px; background: var(--card);
+  border-top: 1px solid var(--line);
+}
+.hpj .tabbar .tab {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 6px 4px; color: var(--muted-2);
+  font-size: 10px; letter-spacing: 0.04em; font-weight: 500;
+  background: transparent; border: none; cursor: pointer;
+}
+.hpj .tabbar .tab.active { color: var(--forest); }
+.hpj .tabbar .tab .ind {
+  width: 18px; height: 2px; background: transparent; border-radius: 2px;
+}
+.hpj .tabbar .tab.active .ind { background: var(--brass); }
+
+.hpj .appbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 18px 10px;
+}
+.hpj .appbar .title { font-size: 22px; font-weight: 500; letter-spacing: -0.02em; }
+.hpj .appbar .title-serif { font-family: var(--serif); font-size: 26px; font-weight: 500; letter-spacing: -0.01em; }
+
+.hpj .avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--brass-soft); color: var(--brass-deep);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 14px; font-weight: 600;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.hpj .img-ph {
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(160, 129, 74, 0.07) 0,
+      rgba(160, 129, 74, 0.07) 6px,
+      rgba(160, 129, 74, 0.02) 6px,
+      rgba(160, 129, 74, 0.02) 12px),
+    var(--card-2);
+  border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted-2); font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+
+.hpj .row { display: flex; align-items: center; gap: 12px; padding: 12px 16px; }
+.hpj .row + .row { border-top: 1px solid var(--line-soft); }
+
+.hpj .tl-rail { position: relative; padding-left: 22px; }
+.hpj .tl-rail::before {
+  content: ''; position: absolute; left: 7px; top: 6px; bottom: 6px;
+  width: 1px; background: var(--line);
+}
+.hpj .tl-item { position: relative; padding: 0 0 14px; }
+.hpj .tl-item::before {
+  content: ''; position: absolute; left: -19px; top: 4px;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--bg); border: 1px solid var(--hairline);
+}
+.hpj .tl-item.done::before { background: var(--forest); border-color: var(--forest); }
+.hpj .tl-item.active::before { background: var(--brass); border-color: var(--brass); box-shadow: 0 0 0 4px var(--brass-soft); }
+
+.hpj .sq {
+  display: inline-block; width: 12px; height: 12px; border-radius: 3px;
+  vertical-align: middle;
+}
+.hpj .sq-ok { background: var(--ok-soft); border: 1px solid var(--ok); }
+.hpj .sq-warn { background: var(--warn-soft); border: 1px solid var(--warn); }
+.hpj .sq-danger { background: var(--danger-soft); border: 1px solid var(--danger); }
+.hpj .sq-busy { background: var(--brass-soft); border: 1px solid var(--brass); }
+.hpj .sq-clean { background: var(--forest-soft); border: 1px solid var(--forest); }
+.hpj .sq-empty { background: var(--card); border: 1px dashed var(--hairline); }
+
+@keyframes hpjPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(160,129,74,0.45); }
+  50% { box-shadow: 0 0 0 4px rgba(160,129,74,0); }
+}
+.hpj .live { animation: hpjPulse 1.8s ease-out infinite; }
+
+.hpj .role-dot { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
+.hpj .role-reception { background: var(--brass); }
+.hpj .role-housekeeping { background: var(--info); }
+.hpj .role-kitchen { background: var(--warn); }
+.hpj .role-sales { background: #7C5F8A; }
+.hpj .role-maintenance { background: var(--danger); }
+.hpj .role-management { background: var(--forest-deep); }
+.hpj .role-concierge { background: var(--forest); }
+
+.hpj-dim { opacity: 0.18; filter: saturate(0.4); transition: opacity .25s, filter .25s; }
+.hpj-dim:hover { opacity: 0.5; }
+
+.hpj .scroll { overflow-y: auto; }
+.hpj .scroll::-webkit-scrollbar { display: none; }

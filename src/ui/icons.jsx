@@ -1,0 +1,56 @@
+// src/ui/icons.jsx — set de íconos boutique
+import React from 'react';
+
+export const Icon = ({ d, size = 18, stroke = 'currentColor', sw = 1.5, fill = 'none', style }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke={stroke} strokeWidth={sw}
+       strokeLinecap="round" strokeLinejoin="round" style={style}>{d}</svg>
+);
+
+export const I = {
+  bell:     <Icon d={<><path d="M6 8a6 6 0 0112 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21a2 2 0 004 0"/></>}/>,
+  key:      <Icon d={<><circle cx="8" cy="15" r="4"/><path d="M11 13l9-9M16 8l3 3M14 10l3 3"/></>}/>,
+  bed:      <Icon d={<><path d="M3 18V8M21 18v-4a3 3 0 00-3-3H3"/><circle cx="7" cy="11" r="2"/></>}/>,
+  broom:    <Icon d={<><path d="M15 3l-9 9 6 6 9-9"/><path d="M3 21l4-4M10 11l3 3"/></>}/>,
+  chef:     <Icon d={<><path d="M6 13a5 5 0 119-3v9H6v-6z"/><path d="M6 18h9"/></>}/>,
+  chart:    <Icon d={<><path d="M3 21h18"/><path d="M6 17v-5M10 17V8M14 17v-7M18 17v-3"/></>}/>,
+  wrench:   <Icon d={<><path d="M14 7a4 4 0 015 5l-9 9-5-5 9-9z"/><circle cx="16" cy="8" r="1.5" fill="currentColor"/></>}/>,
+  bellDesk: <Icon d={<><path d="M4 17h16"/><path d="M5 17a7 7 0 0114 0"/><path d="M12 7V4M10 4h4"/></>}/>,
+  check:    <Icon d={<><path d="M4 12l5 5L20 6"/></>}/>,
+  x:        <Icon d={<><path d="M6 6l12 12M18 6l-6 6-6 6"/></>}/>,
+  plus:     <Icon d={<><path d="M12 5v14M5 12h14"/></>}/>,
+  arrow:    <Icon d={<><path d="M5 12h14M13 5l7 7-7 7"/></>}/>,
+  chevR:    <Icon size={14} d={<><path d="M9 6l6 6-6 6"/></>}/>,
+  chevL:    <Icon d={<><path d="M15 6l-6 6 6 6"/></>}/>,
+  chevD:    <Icon size={14} d={<><path d="M6 9l6 6 6-6"/></>}/>,
+  search:   <Icon d={<><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></>}/>,
+  filter:   <Icon d={<><path d="M4 5h16l-6 8v6l-4 2v-8L4 5z"/></>}/>,
+  user:     <Icon d={<><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></>}/>,
+  users:    <Icon d={<><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 19a6 6 0 0112 0"/><path d="M14 19a4 4 0 017 0"/></>}/>,
+  phone:    <Icon d={<><path d="M5 4h4l2 5-3 2a11 11 0 005 5l2-3 5 2v4a2 2 0 01-2 2A15 15 0 014 6a2 2 0 012-2z"/></>}/>,
+  msg:      <Icon d={<><path d="M3 5h18v12H7l-4 4V5z"/></>}/>,
+  cam:      <Icon d={<><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.5"/><path d="M9 7l2-3h2l2 3"/></>}/>,
+  more:     <Icon d={<><circle cx="5" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1" fill="currentColor" stroke="none"/></>}/>,
+  star:     <Icon d={<><path d="M12 3l3 6 6 .8-4.5 4.2 1.2 6.2L12 17.5 6.3 20.2l1.2-6.2L3 9.8 9 9z"/></>}/>,
+  pin:      <Icon d={<><path d="M12 22s7-7 7-13a7 7 0 00-14 0c0 6 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></>}/>,
+  cal:      <Icon d={<><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></>}/>,
+  clock:    <Icon d={<><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></>}/>,
+  warn:     <Icon d={<><path d="M12 3l10 17H2L12 3z"/><path d="M12 10v5M12 18v.5"/></>}/>,
+  flame:    <Icon d={<><path d="M12 3s4 4 4 8a4 4 0 11-8 0c0-2 2-4 2-4M8 19a4 4 0 008 0"/></>}/>,
+  pkg:      <Icon d={<><path d="M3 8l9-5 9 5v8l-9 5-9-5V8z"/><path d="M3 8l9 5 9-5M12 13v8"/></>}/>,
+  car:      <Icon d={<><path d="M5 16h14l-2-7H7l-2 7z"/><circle cx="8" cy="17.5" r="1.5"/><circle cx="16" cy="17.5" r="1.5"/></>}/>,
+  bag:      <Icon d={<><path d="M5 8h14l-1 13H6L5 8z"/><path d="M9 8V5a3 3 0 016 0v3"/></>}/>,
+  send:     <Icon d={<><path d="M22 3L2 11l8 3 3 8 9-19z"/><path d="M10 14l6-6"/></>}/>,
+  mic:      <Icon d={<><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></>}/>,
+  attach:   <Icon d={<><path d="M21 11l-9 9a5 5 0 11-7-7l9-9a3.5 3.5 0 015 5l-9 9a2 2 0 11-3-3l8-8"/></>}/>,
+  home:     <Icon d={<><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-7h-6v7H4a1 1 0 01-1-1v-9z"/></>}/>,
+  list:     <Icon d={<><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="4" cy="6" r="1" fill="currentColor"/><circle cx="4" cy="12" r="1" fill="currentColor"/><circle cx="4" cy="18" r="1" fill="currentColor"/></>}/>,
+  grid:     <Icon d={<><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></>}/>,
+  map:      <Icon d={<><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2V6z"/><path d="M9 4v16M15 6v16"/></>}/>,
+  dollar:   <Icon d={<><path d="M12 3v18M16 7a4 4 0 00-4-2c-2 0-4 1-4 3s2 3 4 3 4 1 4 3-2 3-4 3a4 4 0 01-4-2"/></>}/>,
+  trend:    <Icon d={<><path d="M3 17l6-6 4 4 8-9"/><path d="M14 6h7v7"/></>}/>,
+  sparkle:  <Icon d={<><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z"/><path d="M19 17l.7 2 2 .7-2 .7L19 22l-.7-2-2-.7 2-.7z"/></>}/>,
+  refresh:  <Icon d={<><path d="M3 12a9 9 0 0115-6.7L21 8M21 3v5h-5"/><path d="M21 12a9 9 0 01-15 6.7L3 16M3 21v-5h5"/></>}/>,
+  coffee:   <Icon d={<><path d="M4 8h13v6a5 5 0 01-10 0V8z"/><path d="M17 10h2a2 2 0 110 4h-2M5 4v2M9 4v2M13 4v2M3 21h17"/></>}/>,
+  spark2:   <Icon d={<><path d="M12 4v4M12 16v4M4 12h4M16 12h4M6.5 6.5l2.5 2.5M15 15l2.5 2.5M17.5 6.5L15 9M9 15l-2.5 2.5"/></>}/>,
+  logout:   <Icon d={<><path d="M15 4h4a1 1 0 011 1v14a1 1 0 01-1 1h-4"/><path d="M9 12h12M17 8l4 4-4 4"/></>}/>,
+};
