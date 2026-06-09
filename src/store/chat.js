@@ -17,6 +17,10 @@ export const useChat = create(
 
       init: async () => {
         if (!isOnlineMode) { set({ ready: true }); return; }
+        if (realtimeChannel) return; // ya inicializado (evita doble suscripción)
+        // Espera la sesión; sin ella, RLS devuelve vacío. Reintenta al iniciar sesión.
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) return;
         try {
           const { data } = await supabase
             .from('messages')

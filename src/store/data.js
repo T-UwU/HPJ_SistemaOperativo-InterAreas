@@ -173,6 +173,12 @@ export const useData = create(
           if (!isOnlineMode || !supabase) return;
           if (get()._hydrated) return;
 
+          // Espera a que la sesión esté restaurada antes de consultar.
+          // Sin sesión las tablas (con RLS) devuelven vacío; en ese caso
+          // no marcamos _hydrated para reintentar al iniciar sesión.
+          const { data: { session } } = await supabase.auth.getSession();
+          if (!session) return;
+
           try {
             const [
               { data: rooms },

@@ -17,6 +17,9 @@ export const useActivity = create(
       init: async () => {
         if (_activityChannel) return; // único guard — evita doble suscripción en StrictMode y HMR
         if (isOnlineMode) {
+          // Espera la sesión; sin ella, RLS devuelve vacío. Reintenta al iniciar sesión.
+          const { data: { session } } = await supabase.auth.getSession();
+          if (!session) return;
           try {
             // Siempre re-fetch para tener el historial fresco desde Supabase
             const { data } = await supabase

@@ -50,13 +50,19 @@ export default function App() {
   const initActivity = useActivity((s) => s.init);
   const hydrateData  = useData((s) => s.actions.hydrate);
   const loading = useAuth((s) => s.loading);
+  const user    = useAuth((s) => s.user);
 
+  // Restaura la sesión una sola vez al cargar.
+  useEffect(() => { initSession(); }, []);
+
+  // Carga los datos cuando la sesión ya está lista, y vuelve a intentarlo
+  // cuando el usuario inicia sesión (cada init espera internamente a la
+  // sesión y no hace nada si ya está cargado).
   useEffect(() => {
-    initSession();
     initChat();
     initActivity();
     hydrateData();
-  }, []);
+  }, [user?.id]);
 
   return (
     <BrowserRouter>
