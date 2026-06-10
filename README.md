@@ -160,6 +160,7 @@ archivo, péguelo en el editor y presione **Run**.
 4. `supabase/add-events.sql`
 5. `supabase/add-comments.sql`
 6. `supabase/add-purchasing.sql`
+7. `supabase/add-venues.sql` (tablas de salones y áreas, administrables desde Supabase)
 
 > El archivo `supabase/seed.sql` (datos de ejemplo) es **opcional**. Úselo solo si
 > desea poblar la base con información de prueba. Para un arranque limpio en
@@ -441,6 +442,21 @@ Supabase antes de poner el sistema en operación real.
 vacía las tablas operativas y reconstruye las reglas. Es una operación
 **destructiva**: úsela solo cuando quiera eliminar todos los datos. Lea los
 comentarios del archivo antes de ejecutarlo.
+
+**Cargar el inventario de habitaciones.** El archivo `supabase/seed-rooms.sql`
+carga las 71 habitaciones del hotel (pisos 1 a 8) como vacías y limpias. Es la
+distribución de referencia del sistema; si el inventario real difiere, edite la
+lista de habitaciones dentro del archivo para que coincida. Incluye, comentada, una
+línea para reemplazar por completo el inventario existente.
+
+**Administrar salones y áreas.** Tras ejecutar `supabase/add-venues.sql`, los
+salones de eventos y las áreas comunes se administran desde **Table Editor** (tablas
+`salones` y `areas`): agregue, edite o desactive renglones (`active = false`). Los
+cambios se reflejan en la aplicación al recargar.
+
+**Datos de demostración.** El archivo `supabase/demo-seed.sql` borra los datos
+operativos y carga un conjunto de ejemplo para presentar el sistema. No toca los
+usuarios.
 
 **Respaldos.** Supabase realiza respaldos automáticos según el plan contratado.
 Para un respaldo manual puede exportar la base desde **Database** y luego

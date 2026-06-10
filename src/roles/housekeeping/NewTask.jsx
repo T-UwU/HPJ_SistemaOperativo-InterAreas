@@ -3,9 +3,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PhoneScreen, BrandStrip, AppBar, Body, BackBtn } from '../../ui/shared.jsx';
-import { useActions } from '../../store/data.js';
+import { useActions, useAreas } from '../../store/data.js';
 import { useCurrentUser } from '../../store/auth.js';
-import { HOTEL_AREAS } from '../../lib/areas.js';
 
 const TASK_TYPES = [
   { value: 'general',      label: 'Limpieza general' },
@@ -26,6 +25,7 @@ export default function HousekeepingNewTask() {
   const navigate = useNavigate();
   const actions  = useActions();
   const user     = useCurrentUser();
+  const HOTEL_AREAS = useAreas();
 
   const [area,     setArea]     = useState('');
   const [type,     setType]     = useState('general');

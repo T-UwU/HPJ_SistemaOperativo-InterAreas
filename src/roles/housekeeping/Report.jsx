@@ -6,9 +6,8 @@ import {
   PhoneScreen, BrandStrip, AppBar, Body, RoleChip, BackBtn,
 } from '../../ui/shared.jsx';
 import { I } from '../../ui/icons.jsx';
-import { useActions, useRooms } from '../../store/data.js';
+import { useActions, useRooms, useAreas } from '../../store/data.js';
 import { useCurrentUser } from '../../store/auth.js';
-import { HOTEL_AREAS } from '../../lib/areas.js';
 import { supabase, isOnlineMode } from '../../lib/supabase.js';
 import { TICKET_CATEGORIES } from '../../ui/categoryIcons.jsx';
 
@@ -40,6 +39,7 @@ export default function HousekeepingReport() {
   const user           = useCurrentUser();
   const { addTicket }  = useActions();
   const rooms          = useRooms();
+  const HOTEL_AREAS    = useAreas();
 
   const [locType,  setLocType]  = useState('habitacion');
   const [room,     setRoom]     = useState('');

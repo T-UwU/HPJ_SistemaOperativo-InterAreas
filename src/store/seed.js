@@ -1,7 +1,13 @@
 // src/store/seed.js — estado inicial vacío (listo para demo en vivo).
 // Las habitaciones son la estructura del hotel; todo lo demás arranca vacío.
 
+import { HOTEL_AREAS, EVENT_SALONES } from '../lib/areas.js';
+
 export const seed = {
+  // ─── Catálogos editables desde Supabase (respaldo a estos valores) ───
+  areas:   HOTEL_AREAS,
+  salones: EVENT_SALONES,
+
   // ─── Habitaciones (71 en 8 pisos) ────────────────────────────
   rooms: [
     // Piso 1

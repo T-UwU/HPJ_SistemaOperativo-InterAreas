@@ -6,10 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import {
   PhoneScreen, BrandStrip, AppBar, Body, BackBtn,
 } from '../../ui/shared.jsx';
-import { useActions, useRooms } from '../../store/data.js';
+import { useActions, useRooms, useAreas } from '../../store/data.js';
 import { TICKET_CATEGORIES } from '../../ui/categoryIcons.jsx';
 import { useCurrentUser } from '../../store/auth.js';
-import { HOTEL_AREAS } from '../../lib/areas.js';
 
 const CATEGORIES = TICKET_CATEGORIES;
 
@@ -21,6 +20,7 @@ export default function MaintenanceNewTicket() {
   const rooms          = useRooms();
   const { addTicket }  = useActions();
   const user           = useCurrentUser();
+  const HOTEL_AREAS    = useAreas();
 
   const [locType,  setLocType]  = useState('habitacion'); // 'habitacion' | 'area'
   const [room,     setRoom]     = useState('');

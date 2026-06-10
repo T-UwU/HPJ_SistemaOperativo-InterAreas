@@ -5,15 +5,8 @@ import { useNavigate, useParams, Navigate } from 'react-router-dom';
 import {
   PhoneScreen, BrandStrip, AppBar, Body, BackBtn,
 } from '../../ui/shared.jsx';
-import { useEvents, useActions } from '../../store/data.js';
+import { useEvents, useActions, useSalones } from '../../store/data.js';
 import { useCurrentUser } from '../../store/auth.js';
-
-const SALONES = [
-  'Salón Palacio',
-  'Sala Chapultepec',
-  'Terraza Principal',
-  'Sala Ejecutiva',
-];
 
 const STATUSES = ['borrador', 'confirmado', 'cerrado'];
 
@@ -23,6 +16,7 @@ export default function EditEvent() {
   const user     = useCurrentUser();
   const events   = useEvents();
   const { updateEvent } = useActions();
+  const SALONES  = useSalones();
 
   const event = events.find((e) => e.id === id);
   if (!event) return <Navigate to="/sales" replace />;
@@ -30,7 +24,7 @@ export default function EditEvent() {
   const [name,      setName]      = useState(event.name      || '');
   const [date,      setDate]      = useState(event.date      || '');
   const [time,      setTime]      = useState(event.time      || '19:00');
-  const [salon,     setSalon]     = useState(event.salon     || SALONES[0]);
+  const [salon,     setSalon]     = useState(event.salon     || SALONES[0]?.name || '');
   const [pax,       setPax]       = useState(event.pax       || 50);
   const [client,    setClient]    = useState(event.client    || '');
   const [menu,      setMenu]      = useState(event.menu      || '');
@@ -88,17 +82,17 @@ export default function EditEvent() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
             {SALONES.map((s) => (
               <button
-                key={s}
-                onClick={() => setSalon(s)}
+                key={s.id}
+                onClick={() => setSalon(s.name)}
                 style={{
                   padding: '10px 14px', borderRadius: 10, textAlign: 'left',
-                  background: salon === s ? 'var(--forest-soft)' : 'var(--card)',
-                  border: `1.5px solid ${salon === s ? 'var(--forest)' : 'var(--line)'}`,
+                  background: salon === s.name ? 'var(--forest-soft)' : 'var(--card)',
+                  border: `1.5px solid ${salon === s.name ? 'var(--forest)' : 'var(--line)'}`,
                   color: 'var(--ink)', fontFamily: 'inherit', fontSize: 13,
-                  cursor: 'pointer', fontWeight: salon === s ? 600 : 400,
+                  cursor: 'pointer', fontWeight: salon === s.name ? 600 : 400,
                 }}
               >
-                {s}
+                {s.name}
               </button>
             ))}
           </div>

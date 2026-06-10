@@ -6,27 +6,21 @@ import { useNavigate } from 'react-router-dom';
 import {
   PhoneScreen, BrandStrip, AppBar, Body, BackBtn,
 } from '../../ui/shared.jsx';
-import { useActions } from '../../store/data.js';
+import { useActions, useSalones } from '../../store/data.js';
 import { useCurrentUser } from '../../store/auth.js';
-
-const SALONES = [
-  'Salón Palacio',
-  'Sala Chapultepec',
-  'Terraza Principal',
-  'Sala Ejecutiva',
-];
 
 export default function NewEvent() {
   const navigate = useNavigate();
   const user = useCurrentUser();
   const { addEvent } = useActions();
+  const SALONES = useSalones();
 
   const today = new Date().toISOString().slice(0, 10);
 
   const [name,      setName]      = useState('');
   const [date,      setDate]      = useState(today);
   const [time,      setTime]      = useState('19:00');
-  const [salon,     setSalon]     = useState(SALONES[0]);
+  const [salon,     setSalon]     = useState(SALONES[0]?.name || '');
   const [pax,       setPax]       = useState('');
   const [client,    setClient]    = useState('');
   const [menu,      setMenu]      = useState('');
@@ -98,17 +92,17 @@ export default function NewEvent() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
             {SALONES.map((s) => (
               <button
-                key={s}
-                onClick={() => setSalon(s)}
+                key={s.id}
+                onClick={() => setSalon(s.name)}
                 style={{
                   padding: '10px 14px', borderRadius: 10, textAlign: 'left',
-                  background: salon === s ? 'var(--forest-soft)' : 'var(--card)',
-                  border: `1.5px solid ${salon === s ? 'var(--forest)' : 'var(--line)'}`,
+                  background: salon === s.name ? 'var(--forest-soft)' : 'var(--card)',
+                  border: `1.5px solid ${salon === s.name ? 'var(--forest)' : 'var(--line)'}`,
                   color: 'var(--ink)', fontFamily: 'inherit', fontSize: 13,
-                  cursor: 'pointer', fontWeight: salon === s ? 600 : 400,
+                  cursor: 'pointer', fontWeight: salon === s.name ? 600 : 400,
                 }}
               >
-                {s}
+                {s.name}
               </button>
             ))}
           </div>

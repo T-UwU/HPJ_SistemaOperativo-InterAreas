@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     host: true,   // expón en LAN para probar desde el celu
     port: 5173,
-    allowedHosts: ['repeat-contrary-enable-consultants.trycloudflare.com'],
+    allowedHosts: ["brisbane-traveler-bring-direct.trycloudflare.com"],
   },
   // Pre-empaqueta Supabase al arrancar el servidor (en vez de descubrirlo
   // sobre la marcha). Evita la recarga a media carga que a veces dejaba a

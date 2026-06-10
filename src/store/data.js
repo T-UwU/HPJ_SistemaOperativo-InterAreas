@@ -60,6 +60,10 @@ const fromRoomType = ({ price_per_night, ...r }) =>
 const fromCustomer = ({ lifetime_revenue, previous_stays, ...r }) =>
   ({ ...r, lifetimeRevenue: lifetime_revenue, previousStays: previous_stays });
 
+// Catálogos: solo nos quedamos con los campos que usa la UI.
+const fromSalon = (r) => ({ id: r.id, name: r.name });
+const fromArea  = (r) => ({ id: r.id, label: r.label });
+
 // ── Mappers Zustand (camelCase) → Supabase (snake_case) ───────────────
 const toRoom = (r) => ({
   id: r.id, floor: r.floor, type: r.type, status: r.status,
@@ -156,6 +160,8 @@ function setupRealtime(set) {
     .on('postgres_changes', { event: '*', schema: 'public', table: 'reservations' }, on(fromRes,     'reservations'))
     .on('postgres_changes', { event: '*', schema: 'public', table: 'events' },       on(fromEvent,   'events'))
     .on('postgres_changes', { event: '*', schema: 'public', table: 'requisitions' }, on(fromReq,     'requisitions'))
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'salones' },      on(fromSalon,   'salones'))
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'areas' },        on(fromArea,    'areas'))
     .subscribe();
 }
 
@@ -191,6 +197,8 @@ export const useData = create(
               { data: comments },
               { data: roomTypes },
               { data: customers },
+              { data: salones },
+              { data: areas },
             ] = await Promise.all([
               supabase.from('rooms').select('*').order('id'),
               supabase.from('tasks').select('*').order('created_at', { ascending: false }),
@@ -202,6 +210,8 @@ export const useData = create(
               supabase.from('comments').select('*').order('created_at', { ascending: true }),
               supabase.from('room_types').select('*'),
               supabase.from('customers').select('*'),
+              supabase.from('salones').select('*').eq('active', true).order('sort'),
+              supabase.from('areas').select('*').eq('active', true).order('sort'),
             ]);
 
             set({
@@ -218,6 +228,10 @@ export const useData = create(
               ...(requisitions && { requisitions: requisitions.map(fromReq) }),
               ...(comments     && { comments:     comments.map(fromComment) }),
               ...(customers    && { customers:    customers.map(fromCustomer) }),
+              // Catálogos: solo se sustituyen si la tabla tiene registros;
+              // si está vacía, se conservan los valores de respaldo del seed.
+              ...(salones?.length > 0 && { salones: salones.map(fromSalon) }),
+              ...(areas?.length   > 0 && { areas:   areas.map(fromArea) }),
             });
 
             setupRealtime(set);
@@ -489,7 +503,7 @@ export const useData = create(
     }),
     {
       name: 'hpj.data',
-      version: 12,
+      version: 13,
       partialize: (s) => {
         // Online: Supabase es la fuente de verdad → no persistir en localStorage
         if (isOnlineMode) return {};
@@ -502,6 +516,8 @@ export const useData = create(
 
 // ── Selectores ────────────────────────────────────────────────────────
 export const useRooms        = () => useData((s) => s.rooms);
+export const useSalones      = () => useData((s) => s.salones);
+export const useAreas        = () => useData((s) => s.areas);
 export const useTickets      = () => useData((s) => s.tickets);
 export const useTasks        = () => useData((s) => s.tasks);
 export const useReservations = () => useData((s) => s.reservations);
